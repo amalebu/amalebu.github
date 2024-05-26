@@ -1,8 +1,9 @@
 <script setup>
-import logo from "@/assets/profile.png"
-import { onMounted } from "vue";
+import logo from "@/assets/profile.webp"
+import { ref,onMounted } from "vue";
 
 const dataText = [ "professionalism", "so much fun." ];
+const textTyping = ref("");
 
 onMounted(() => {
     StartTextAnimation(0);
@@ -30,7 +31,7 @@ function StartTextAnimation(i) {
     // chekc if text isn't finished yet
     if (i < (text.length)) {
       // add next character to h1
-     document.getElementById("text-typing").innerHTML = text.substring(0, i+1) +'<span aria-hidden="true"></span>';
+     textTyping.value = text.substring(0, i+1);
 
       // wait for a while and call this function again for next character
       setTimeout(function() {
@@ -75,7 +76,7 @@ function StartTextAnimation(i) {
                 </h1>
                 <p class="text-lg my-2 text-gray-800 dark:text-gray-300 typewrite" 
                 data-aos="fade-up" data-aos-delay="150" data-aos-duration='1050'>
-                    a <span class="text-purple-500 font-semibold p-0">Web</span> Developer with ideas, creativity and <span id="text-typing">professionalism</span>
+                    a <span class="text-purple-500 font-semibold p-0">Web</span> Developer with ideas, creativity and <span v-text="textTyping"></span><span class="animate-pulse"> |</span>
                 </p>
                 <p class="text-lg text-center lg:text-left mb-6 flex p-0 gap-2 items-center text-gray-600 dark:text-gray-400" data-aos="fade-up" data-aos-delay="250" data-aos-duration='1050'>
                     from
