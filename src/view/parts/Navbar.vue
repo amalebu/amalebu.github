@@ -63,11 +63,11 @@ const watchScreen = () => {
                             <a
                             href='https://www.instagram.com/amalebu/' alt="github link" target="_blank"
                             rel="noreferrer noopener nofollow">
-                            <InstagramLogo class="text-gray-700 dark:text-gray-200 h-7 w-7"></InstagramLogo>
+                            <InstagramLogo class="text-gray-700 dark:text-gray-300 h-7 w-7"></InstagramLogo>
                             </a>
                             <a href='https://github.com/amalebu' alt="github link" target="_blank"
                                 rel="noreferrer noopener nofollow">
-                                <GithubLogo class="text-gray-700 dark:text-gray-200 h-7 w-7"></GithubLogo>  
+                                <GithubLogo class="text-gray-700 dark:text-gray-300 h-7 w-7"></GithubLogo>  
                             </a>
                         </div>
                     </div> 

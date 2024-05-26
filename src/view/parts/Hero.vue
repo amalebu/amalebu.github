@@ -1,5 +1,49 @@
 <script setup>
 import logo from "@/assets/profile.png"
+import { onMounted } from "vue";
+
+const dataText = [ "professionalism", "so much fun." ];
+
+onMounted(() => {
+    StartTextAnimation(0);
+})
+
+function StartTextAnimation(i) {
+     if (typeof dataText[i] == 'undefined'){
+        setTimeout(function() {
+          StartTextAnimation(0);
+        }, 20000);
+     }
+     // check if dataText[i] exists
+    if (i < dataText[i].length) {
+      // text exists! start typewriter animation
+     typeWriter(dataText[i], 0, function(){
+       // after callback (and whole text has been animated), start next text
+       StartTextAnimation(i + 1);
+     });
+    }
+  }
+
+    // type one text in the typwriter
+  // keeps calling itself until the text is finished
+  function typeWriter(text, i, fnCallback) {
+    // chekc if text isn't finished yet
+    if (i < (text.length)) {
+      // add next character to h1
+     document.getElementById("text-typing").innerHTML = text.substring(0, i+1) +'<span aria-hidden="true"></span>';
+
+      // wait for a while and call this function again for next character
+      setTimeout(function() {
+        typeWriter(text, i + 1, fnCallback)
+      }, 100);
+    }
+    // text finished, call callback if there is a callback function
+    else if (typeof fnCallback == 'function') {
+      // call callback after timeout
+      setTimeout(fnCallback, 700);
+    }
+  }
+
 </script>
 
 <template>
@@ -29,12 +73,12 @@ import logo from "@/assets/profile.png"
                         Crisantus <span class="bg-gradient-to-l from-purple-600 from-10% via-purple-900 to-blue-700 inline-block text-transparent bg-clip-text text-nowrap">Lebu Raya</span>
                     </p>
                 </h1>
-                <p class="text-lg my-2 text-gray-800 dark:text-gray-300" 
+                <p class="text-lg my-2 text-gray-800 dark:text-gray-300 typewrite" 
                 data-aos="fade-up" data-aos-delay="150" data-aos-duration='1050'>
-                    a <span class="text-purple-500 font-semibold p-0">Web</span> Developer with ideas, creativity and so much fun.
+                    a <span class="text-purple-500 font-semibold p-0">Web</span> Developer with ideas, creativity and <span id="text-typing">professionalism</span>
                 </p>
                 <p class="text-lg text-center lg:text-left mb-6 flex p-0 gap-2 items-center text-gray-600 dark:text-gray-400" data-aos="fade-up" data-aos-delay="250" data-aos-duration='1050'>
-                    From
+                    from
                     <span class="text-secondary">Adonara, East Flores, Indonesia</span>
                 </p>
                 <div class="flex justify-start flex-wrap gap-6 mt-4 " data-aos="fade-up" data-aos-delay="450" data-aos-duration='1050'>
